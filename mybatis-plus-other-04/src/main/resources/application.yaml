@@ -10,3 +10,4 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 控制台输出SQL语句
+  type-aliases-package: org.example.pojo
