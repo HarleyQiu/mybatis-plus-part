@@ -1,7 +1,9 @@
 package org.example.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
+@TableName("user")
 @Data
 public class User {
     private Long id;
