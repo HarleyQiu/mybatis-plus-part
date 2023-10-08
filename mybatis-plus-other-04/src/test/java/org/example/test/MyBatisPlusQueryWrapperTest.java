@@ -64,14 +64,15 @@ public class MyBatisPlusQueryWrapperTest {
         //UPDATE t_user SET age=?, email=? WHERE name LIKE ? AND age > ? OR email IS NULL)
 
         QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
-        userQueryWrapper.gt("age", 20)
+        userQueryWrapper
+                .gt("age", 20)
                 .like("name", "a")  //条件直接调用方法默认使用and 拼接
-                .or().isNull("email")  // or().第一个条件是or -> 拼接条件还是and
-                .isNull("email");
+                .or()
+                .isNull("email");  // or().第一个条件是or -> 拼接条件还是and
 
         User user = new User();
         user.setAge(88);
-        user.setEmail("heheheh");
+        user.setEmail("heehaw");
         userMapper.update(user, userQueryWrapper);
 
     }
@@ -85,10 +86,10 @@ public class MyBatisPlusQueryWrapperTest {
 
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.gt("id", 1L);
-        //默认是查询全部列
         queryWrapper.select("name", "age"); //指定查询的列
 
-        userMapper.selectList(queryWrapper);
+        List<User> users = userMapper.selectList(queryWrapper);
+        log.info("{}", users);
     }
 
 
@@ -116,7 +117,6 @@ public class MyBatisPlusQueryWrapperTest {
         //每个方法都会有一个 boolean condition,允许我们第一位放一个比较表达式 true 整个条件生效 false 不生效
         // if test ="判断"
         //gt(boolean condition, R column, Object val)
-
         queryWrapper.eq(StringUtils.isNotBlank(name), "name", name);
         queryWrapper.eq(age != null && age > 18, "age", age);
 
