@@ -42,4 +42,12 @@ public class MyBatisPlusTest {
         long total = page.getTotal(); //总条数
         log.info("{}, {}, {}, {}", current, size, records, total);
     }
+
+    @Test
+    public void testDelete(){
+
+        //全表删除 Error updating database.  Cause: com.baomidou.mybatisplus.core.exceptions.MybatisPlusException: Prohibition of table update operation
+        userMapper.delete(null);
+
+    }
 }

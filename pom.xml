@@ -13,6 +13,7 @@
         <module>mybatis-plus-curd-mapper-02</module>
         <module>mybatis-plus-curd-service-03</module>
         <module>mybatis-plus-other-04</module>
+        <module>myabtis-plus-mybatisx-05</module>
     </modules>
 
     <properties>
